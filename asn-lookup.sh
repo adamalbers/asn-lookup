@@ -27,12 +27,13 @@ then
 fi
 
 # Print the WHOIS info.
-printf "$whois\n"
+printf "\n---WHOIS info for $domainName---\n"
+printf "$whois\n\n"
 
 # Save CIDR blocks to file.
 filename=$domainName-ip-blocks.txt
 whois -h whois.radb.net -- "-i origin $asn" | awk '/^route:/ {print $2;}' | sort | uniq > $filename
-printf "IPs for $domainName saved to $filename.\n"
+printf "IPs for $domainName saved to $filename.\n\n"
 
 
 exit
